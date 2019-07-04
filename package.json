@@ -1,0 +1,24 @@
+{
+  "name": "queue-tool",
+  "version": "1.0.0",
+  "description": "queue and task",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --require @babel/register"
+  },
+  "keywords": [
+    "queue"
+  ],
+  "author": "wjz",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.4.5",
+    "@babel/preset-env": "^7.4.5",
+    "@babel/register": "^7.4.4",
+    "chai": "^4.2.0",
+    "mocha": "^6.1.4"
+  },
+  "dependencies": {
+    "events": "^3.0.0"
+  }
+}
