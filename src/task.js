@@ -17,6 +17,11 @@ export default class Task extends EventEmitter{
     }
 
     end(res){
+        if(this._status == TaskStatus.TASK_STATUS_CANCELLED || this._status == TaskStatus.TASK_STATUS_ERROR){
+            console.error('task is cancelled or error, can not be ended!');
+            return;
+        }
+
         this._status = TaskStatus.TASK_STATUS_END;
         this.emit('end', res);
     }
@@ -27,10 +32,12 @@ export default class Task extends EventEmitter{
     }
 
     abort(){
-        this._status = TaskStatus.TASK_STATUS_CANCELLED;
-        this.emit('cancel');
+        if (this._status == TaskStatus.TASK_STATUS_NOTSTART || this._status == TaskStatus.TASK_STATUS_RUNNING) {
+            this._status = TaskStatus.TASK_STATUS_CANCELLED;
+            this.emit('cancel');
+        }
     }
-
+ 
     getStatus(){
         return this._status;
     }
